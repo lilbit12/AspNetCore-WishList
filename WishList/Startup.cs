@@ -42,6 +42,7 @@ namespace WishList
                 endpoints.MapDefaultControllerRoute();
             });
 
+            app.UseCors(options => options.AllowAnyOrigin());
 
         }
     }
