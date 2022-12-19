@@ -19,8 +19,8 @@ namespace WishList.Controllers
 
         public IActionResult Index()
         {
-            var viewModel = _context.Items;
-            return View("Index", viewModel);
+            List<Item> viewData = _context.Items.ToList();
+            return View("Index", viewData);
         }
 
         [HttpGet]
@@ -32,7 +32,7 @@ namespace WishList.Controllers
         [HttpPost]
         public IActionResult Create(Item item)
         {
-            var result = _context.Items.Add(item);
+            _context.Items.Add(item);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
